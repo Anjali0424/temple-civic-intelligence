@@ -1,0 +1,122 @@
+// Settings defaults — isolated state object for the Settings page.
+// Later: GET /api/settings + PUT /api/settings (Spring Boot + PostgreSQL).
+// Deep-copy on load so defaults stay pristine for Reset.
+
+export const settingsSections = [
+  "General",
+  "Crowd Monitoring",
+  "Alerts",
+  "AI & Detection",
+  "Cameras",
+  "Notifications",
+  "Appearance",
+  "Profile",
+  "Security",
+  "System",
+];
+
+export const defaultSettings = {
+  general: {
+    venueName: "AI Crowd Intelligence Venue",
+    venueType: "Large Gathering",
+    location: "Main Gathering Area",
+    timezone: "Asia/Kolkata",
+    operatingMode: "Live Monitoring",
+  },
+  crowdMonitoring: {
+    enabled: true,
+    occupancyTracking: true,
+    densityMonitoring: true,
+    flowMonitoring: true,
+    entryExitTracking: true,
+    moderateFrom: 60,
+    highFrom: 75,
+    criticalFrom: 90,
+    defaultZoneCapacity: 4000,
+  },
+  alerts: {
+    highDensity: true,
+    capacityThreshold: true,
+    unusualMovement: true,
+    restrictedZone: true,
+    cameraOffline: true,
+    cameraDegraded: true,
+    highDensityAt: 80,
+    criticalDensityAt: 90,
+    offlineDelaySec: 30,
+    cooldownSec: 60,
+    severity: {
+      highDensity: "High",
+      criticalDensity: "Critical",
+      cameraOffline: "Warning",
+      restrictedZone: "Critical",
+    },
+  },
+  ai: {
+    personDetection: true,
+    objectTracking: true,
+    densityAnalysis: true,
+    movementAnalysis: true,
+    zoneAnalysis: true,
+    engine: "YOLOv11",
+    tracker: "ByteTrack",
+    detectionConfidence: 0.5,
+    trackingConfidence: 0.5,
+    processingMode: "Real-time",
+  },
+  cameras: {
+    defaultResolution: "1920 × 1080",
+    targetFps: 24,
+    healthCheckSec: 10,
+    heartbeatTimeoutSec: 30,
+    defaultAi: "Enabled",
+  },
+  notifications: {
+    inApp: true,
+    email: false,
+    push: false,
+    onCritical: true,
+    onHigh: true,
+    onWarning: true,
+    onInfo: false,
+    soundCritical: true,
+    soundHigh: true,
+    soundWarning: false,
+    soundInfo: false,
+  },
+  appearance: {
+    theme: "Light",
+    accent: "Indigo",
+    density: "Comfortable",
+    reduceMotion: false,
+  },
+  profile: {
+    name: "Operator",
+    role: "Control Room Operator",
+    department: "Crowd Operations",
+    email: "operator@example.com",
+    phone: "+91 XXX XXX XXXX",
+  },
+  security: {
+    sessionTimeout: "30 minutes",
+    requireReauth: true,
+    loginNotifications: true,
+  },
+};
+
+export const systemStatus = {
+  app: "AI Crowd Intelligence",
+  version: "1.0.0",
+  frontend: "React + Vite",
+  designSystem: "Material 3",
+  ai: "YOLOv11 + ByteTrack",
+  backend: "Spring Boot",
+  database: "PostgreSQL",
+  aiService: "Python",
+  integrations: [
+    { name: "Frontend", state: "Operational" },
+    { name: "Backend", state: "Pending Integration" },
+    { name: "AI Service", state: "Pending Integration" },
+    { name: "Database", state: "Pending Integration" },
+  ],
+};
